@@ -1,0 +1,19 @@
+import React, { useState} from 'react'
+import * as firebaseAuth from "../firebase/firebase"
+
+
+export function useSetUser(scopeArray, provider) {
+    scopeArray.map(scope => provider.addScope(scope))
+    firebaseAuth
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        // This gives you a Google Access Token.
+        var token = result.credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        setUser(user)
+      });
+      return user
+  }
+
