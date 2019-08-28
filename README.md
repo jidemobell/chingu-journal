@@ -4,7 +4,9 @@
 
 To test this project set required env variables and run:
 
-### yarn start`
+```sh
+$ yarn start
+```
 
 ## Built With
 
