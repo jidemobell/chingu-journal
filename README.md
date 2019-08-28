@@ -10,6 +10,8 @@ $ yarn start
 
 ## Built With
 
+
+* [React](https://#)
 * [Firebase](https://#)
 * [Firestore](https://#g)
 * [Bulma](https://#)
