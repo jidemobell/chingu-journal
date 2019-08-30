@@ -3,7 +3,7 @@ import  { AuthContext } from "../../hoc/AuthProvider";
 import { routerHistory } from "../../containers/App"
 
 function Header({ noteUser }) {
-//  const { authenticated, updateAuth } = useContext(AuthContext);
+const { updateAuth } = useContext(AuthContext);
   return (
       <div>
         <nav
@@ -45,9 +45,8 @@ function Header({ noteUser }) {
                   className="button is-primary"
                   href="#"
                   onClick={() => {
-                  //  console.log(authenticated)
-                //    updateAuth(false)
-               //     authenticated === false &&  routerHistory.push('/')
+                   const presentAuth = updateAuth(false)
+                   !presentAuth &&  routerHistory.push('/')
                   }}
                 >
                   <strong>Sign Out</strong>
