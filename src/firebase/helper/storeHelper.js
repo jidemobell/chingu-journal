@@ -35,13 +35,17 @@ export function FireObject(
             notes: []
           })
           .then(function() {
-            localStorage.setItem("token", token);
-            const presentAuth = authenticator(true);
+            localStorage.setItem("token", token)
+            const presentAuth = authenticator(true)
             presentAuth && routerHistory.push("/dashboard")
           })
           .catch(function(error) {
             console.error("Error adding document: ", error)
           });
       });
-  };
+  }
+
+  this.addNote = function(title, note) {
+         
+  }
 }

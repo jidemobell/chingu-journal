@@ -1,32 +1,45 @@
-import React from "react";
+import React,{useState} from "react";
 
 function NoteForm() {
+  const [title, setTitle] = useState('')
+  const [note, setNote] = useState('')
+
   return (
     <section className="noter">
-      <div className="form-container">
+      <form className="form-container"
+       onSubmit={(e) => {
+         e.preventDefault()
+         const elementsArray = e.target.elements !== undefined && e.target.elements
+         Array(elementsArray).filter(tag => {   
+           setTitle(tag[0].value)
+           setNote(tag[1].value)  
+            
+         })
+       }}
+      >
         <div className="field">
           <label className="label">Title</label>
           <div className="control">
-            <input className="input" type="text" placeholder="Text input" />
+            <input className="input" type="text" placeholder="Text input" defaultValue={title} />
           </div>
         </div>
 
         <div className="field">
           <label className="label">Note</label>
           <div className="control">
-            <textarea className="textarea" placeholder="Textarea" />
+            <textarea className="textarea" placeholder="Textarea" defaultValue={note} />
           </div>
         </div>
 
         <div className="field is-grouped">
           <div className="control">
-            <button className="button is-primary edit-button">Submit</button>
+            <button className="button is-primary edit-button" type="submit">SAVE NOTE</button>
           </div>
           <div className="control">
             <button className="button is-light">Cancel</button>
           </div>
         </div>
-      </div>
+      </form>
     </section>
   );
 }
