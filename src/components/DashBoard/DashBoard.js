@@ -1,49 +1,37 @@
 import React, { useState, useEffect } from "react";
 
-import { db } from '../../firebase/firebase'
+import { db } from "../../firebase/firebase";
 
 import NoteForm from "../NoteForm/NoteForm";
 import Header from "../Header/Header";
 import Journal from "../journal/Journal";
 
-// const initialState = { userData: {} };
-
 function DashBaord() {
-  const token = localStorage.getItem('token')
-  console.log('token', token)
-  const [user, setUser] = useState({})
-  
-  function fetchData(){
-    // db.collection("users")
-    // .where(`accessToken`, "==", `${token}`)
-    // .get()
+  const token = localStorage.getItem("token");
+  console.log("token", token);
+  const [user, setUser] = useState({});
 
-    // .then((querySnapshot) => {
-    //   const data = Array(querySnapshot).map(doc => doc.data());
-    //   console.log("user data", data)
-    //   setUser(data)
-    // });
+  function fetchData() {
     db.collection("users")
-    .where(`accessToken`, "==", `${token}`)
-    .get()
-    .then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-          setUser(doc.data())
+      .where(`accessToken`, "==", `${token}`)
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          setUser(doc.data());
+        });
       });
-  });
-
   }
 
   useEffect(() => {
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
   return (
     <div>
       <Header noteUser={user} />
       <section className="board-center">
         <NoteForm />
-        <hr style={{ height: "5px" }}/>
+        <hr style={{ height: "5px" }} />
         <Journal />
       </section>
     </div>

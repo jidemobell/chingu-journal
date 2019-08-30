@@ -3,10 +3,14 @@ import React from "react";
 function NoteCard() {
   return (
     <section className="notecard">
-      <div className="card">
+      <div className="card my-card">
         <header className="card-header">
           <p className="card-header-title">NoteTitle</p>
-          <a href="#" className="card-header-icon" aria-label="more options">
+          <a
+            href="http://fakelink"
+            className="card-header-icon"
+            aria-label="more options"
+          >
             <span className="icon">
               <i className="fas fa-angle-down" aria-hidden="true" />
             </span>
@@ -19,10 +23,10 @@ function NoteCard() {
           </div>
         </div>
         <footer className="card-footer">
-          <a href="#" className="card-footer-item">
+          <a href="http://fakelink" className="card-footer-item">
             Edit
           </a>
-          <a href="#" className="card-footer-item">
+          <a href="http://fakelink" className="card-footer-item">
             Delete
           </a>
         </footer>

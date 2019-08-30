@@ -1,18 +1,18 @@
-import React, { useEffect, useContext } from "react";
-import { UserContext } from "./AuthProvider";
+import React, { useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
 
-import { routerHistory } from "../containers/App";
+import { AuthContext } from "./AuthProvider";
 
-export default ComposedComponent => {
-  return () => {
-    const authState = useContext(UserContext);
-    useEffect(() => {
-      if (!authState.authenticated) {
-        console.log(authState.authenticated, 'at auth')
-        // routerHistory.push("/login");
-      }
-    }, []);
-    return <ComposedComponent />;
-  };
-};
+function ProtectedRoute({render, ...props}) {
+ // const Component = props.render;
+  const { authenticated } = useContext(AuthContext);
+  return (
+      <Route
+        {...props}
+        render={ () => authenticated ? render() : <Redirect to="/login" />
+        }
+      />
+  );
+}
 
+export default ProtectedRoute;

@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { UserContext, AuthProvider } from "../../hoc/AuthProvider";
+import  { AuthContext } from "../../hoc/AuthProvider";
+import { routerHistory } from "../../containers/App"
 
 function Header({ noteUser }) {
-  const authState = useContext(UserContext);
+//  const { authenticated, updateAuth } = useContext(AuthContext);
   return (
-    <AuthProvider>
-      <nav
+      <div>
+        <nav
         className="navbar myNav"
         role="navigation"
         aria-label="main navigation"
@@ -13,7 +14,7 @@ function Header({ noteUser }) {
         <div id="navbarBasicExample" className="navbar-menu">
           <div className="navbar-start">
             <h1 className="navbar-item" style={{ fontSize: "40px" }}>
-              <strong>Digital Journal</strong>
+              <strong >Digital Journal</strong>
             </h1>
             <h1
               className="navbar-item"
@@ -34,27 +35,29 @@ function Header({ noteUser }) {
               <span>{noteUser.name}</span>
             </div>
             <div className="navbar-item">
-              <figure class="image is-128x128px">
-                <img class="is-rounded" src={noteUser.image} />
+              <figure className="image is-128x128px">
+                <img className="is-rounded" src={noteUser.image} alt="avatar" />
               </figure>
             </div>
             <div className="navbar-item">
               <div className="buttons">
-                <a
+                <button
                   className="button is-primary"
+                  href="#"
                   onClick={() => {
-                    console.log("yes", authState.authenticated);
-                    authState.updateAuth(false);
+                  //  console.log(authenticated)
+                //    updateAuth(false)
+               //     authenticated === false &&  routerHistory.push('/')
                   }}
                 >
                   <strong>Sign Out</strong>
-                </a>
+                </button>
               </div>
             </div>
           </div>
         </div>
       </nav>
-    </AuthProvider>
+      </div>
   );
 }
 
