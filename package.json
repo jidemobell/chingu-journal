@@ -1,7 +1,7 @@
 {
   "name": "jounal",
   "version": "0.1.0",
-  "homepage": "https://jidemobell.github.io/jounal",
+  "homepage": "https://jidemobell.github.io/jounal/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jidemobell/journal.git"
@@ -20,6 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
     "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
