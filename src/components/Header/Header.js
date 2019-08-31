@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
-import  { AuthContext } from "../../hoc/AuthProvider";
-import { routerHistory } from "../../containers/App"
+import { AuthContext } from "../../hoc/AuthProvider";
+import { routerHistory } from "../../containers/App";
 
 function Header({ noteUser }) {
-const { updateAuth } = useContext(AuthContext);
+  const { updateAuth } = useContext(AuthContext);
   return (
-      <div>
-        <nav
+    <div>
+      <nav
         className="navbar myNav"
         role="navigation"
         aria-label="main navigation"
       >
-        <div id="navbarBasicExample" className="navbar-menu">
-          <div className="navbar-start">
+        <div className="navbar-brand">
+          <div className="navbar-item">
             <h1 className="navbar-item" style={{ fontSize: "40px" }}>
-              <strong >Digital Journal</strong>
+              <strong>Digital Journal</strong>
             </h1>
             <h1
               className="navbar-item"
@@ -30,6 +30,20 @@ const { updateAuth } = useContext(AuthContext);
             </h1>
           </div>
 
+          <a
+            role="button"
+            className="navbar-burger burger is-active"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+            href={'https://fakelink'}
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <div id="navbarBasicExample" className="navbar-menu is-active">
           <div className="navbar-end">
             <div className="navbar-item">
               <span>{noteUser.name}</span>
@@ -43,10 +57,11 @@ const { updateAuth } = useContext(AuthContext);
               <div className="buttons">
                 <button
                   className="button is-primary"
-                  href="#"
+                  href="http://fakelink"
                   onClick={() => {
-                   const presentAuth = updateAuth(false)
-                   !presentAuth &&  routerHistory.push('/')
+                    localStorage.clear();
+                    updateAuth(false);
+                    routerHistory.push("/");
                   }}
                 >
                   <strong>Sign Out</strong>
@@ -56,7 +71,7 @@ const { updateAuth } = useContext(AuthContext);
           </div>
         </div>
       </nav>
-      </div>
+    </div>
   );
 }
 

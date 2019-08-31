@@ -1,13 +1,10 @@
-import { auth } from "../firebase"
-import { routerHistory } from "../../containers/App"
+import { auth, db } from "../firebase";
+import { routerHistory } from "../../containers/App";
 
-export function FireObject(
-  provider,
-  db,
-  scopes,
-  collection,
-  context
-) {
+// a FireObject class to encapsulate firbase login into a 
+// class ownProperty 
+
+export function FireObject(provider, scopes, collection, context) {
   this.provider = provider;
   this.db = db;
   this.scopes = scopes;
@@ -16,7 +13,7 @@ export function FireObject(
 
   this.loginWithPopup = function() {
     let authenticator = this.authContext;
-    this.scopes.map(scope => this.provider.addScope(scope))
+    this.scopes.map(scope => this.provider.addScope(scope));
     auth()
       .signInWithPopup(this.provider)
       .then(result => {
@@ -24,7 +21,6 @@ export function FireObject(
         const token = result.credential.accessToken;
         // The signed-in user info.
         const data = result.user;
-        //check if user already exist in firestore
         db.collection(collection)
           .doc(`${data.email}`)
           .set({
@@ -35,17 +31,14 @@ export function FireObject(
             notes: []
           })
           .then(function() {
-            localStorage.setItem("token", token)
-            const presentAuth = authenticator(true)
-            presentAuth && routerHistory.push("/dashboard")
+            localStorage.setItem("token", token);
+            const presentAuth = authenticator(true);
+            presentAuth && routerHistory.push("/dashboard");
           })
           .catch(function(error) {
-            console.error("Error adding document: ", error)
+            console.error("Error adding document: ", error);
           });
       });
-  }
-
-  this.addNote = function(title, note) {
-         
-  }
+  };
 }
+

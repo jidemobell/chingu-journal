@@ -1,11 +1,11 @@
 import React from "react";
 
-function NoteCard() {
+function NoteCard({data}) {
   return (
     <section className="notecard">
       <div className="card my-card">
         <header className="card-header">
-          <p className="card-header-title">NoteTitle</p>
+          <p className="card-header-title">{data.title}</p>
           <a
             href="http://fakelink"
             className="card-header-icon"
@@ -18,8 +18,7 @@ function NoteCard() {
         </header>
         <div className="card-content">
           <div className="content">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            nec iaculis mauris.
+            {data.note}
           </div>
         </div>
         <footer className="card-footer">

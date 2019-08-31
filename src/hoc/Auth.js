@@ -3,8 +3,8 @@ import { Route, Redirect } from "react-router-dom";
 
 import { AuthContext } from "./AuthProvider";
 
+// an HOC for protected routes
 function ProtectedRoute({render, ...props}) {
- // const Component = props.render;
   const { authenticated } = useContext(AuthContext);
   return (
       <Route

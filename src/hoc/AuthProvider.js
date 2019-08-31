@@ -6,13 +6,8 @@ export const AuthProvider = ({ children }) => {
   const [authenticated, setAuthenticated] = useState(prevAuth);
 
   function updateAuth(update) {
-    console.log("updating auth with", update);
      setAuthenticated(update);
      return authenticated
-  }
-
-  function getIsAuthenticated(){
-    return authenticated
   }
 
   useEffect(() => {
@@ -21,8 +16,7 @@ export const AuthProvider = ({ children }) => {
 
   const defaultContext = {
     authenticated,
-    updateAuth,
-    getIsAuthenticated
+    updateAuth
   };
 
   return (

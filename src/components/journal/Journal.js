@@ -2,7 +2,8 @@ import React from "react";
 
 import NoteCard from "../NoteCard/NoteCard";
 
-function Journal() {
+function Journal({prevNotes}) {
+
   return (
     <div className="journal board-center">
       <section className="section mySection">
@@ -11,12 +12,9 @@ function Journal() {
             Recently Addded
           </h1>
           <div className="class-shelf">
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
-            <NoteCard />
+            {prevNotes.map(note => {
+              return <NoteCard data={note} key={note.title} />;
+            })}
           </div>
         </div>
       </section>

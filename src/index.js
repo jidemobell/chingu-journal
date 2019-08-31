@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import {AuthProvider} from "./hoc/AuthProvider";
 import App from "./containers/App";
-// import Dashboard from './components/DashBoard/DashBoard'
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(

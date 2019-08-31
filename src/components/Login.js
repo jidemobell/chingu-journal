@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import {
-  db,
   googleProvider,
   facebookProvider,
   githubProvider
@@ -46,7 +45,6 @@ function Login() {
             onClick={() => {
               const newUser = new FireObject(
                 googleProvider,
-                db,
                 ["profile", "email"],
                 "users",
                 updateAuth
@@ -61,7 +59,6 @@ function Login() {
             onClick={() => {
               const newUser = new FireObject(
                 facebookProvider,
-                db,
                 ["user_birthday"],
                 "users",
                 updateAuth
@@ -76,7 +73,6 @@ function Login() {
             onClick={() => {
               const newUser = new FireObject(
                 githubProvider,
-                db,
                 ["repo"],
                 "users",
                 updateAuth

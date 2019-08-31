@@ -1,5 +1,7 @@
 import React,{useState} from "react";
 
+import { addNote } from '../../controller/firebase'
+
 function NoteForm() {
   const [title, setTitle] = useState('')
   const [note, setNote] = useState('')
@@ -13,7 +15,12 @@ function NoteForm() {
          Array(elementsArray).filter(tag => {   
            setTitle(tag[0].value)
            setNote(tag[1].value)  
-            
+           const email = localStorage.getItem('email')
+           return addNote(email,"users", tag[0].value, tag[1].value )
+           .then(() => {
+             setTitle('')
+             setTitle('')
+           })
          })
        }}
       >
