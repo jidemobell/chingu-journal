@@ -61,7 +61,7 @@ function Header({ noteUser }) {
                   onClick={() => {
                     localStorage.clear();
                     updateAuth(false);
-                    routerHistory.push("/login");
+                    routerHistory.push("/");
                   }}
                 >
                   <strong>Sign Out</strong>
