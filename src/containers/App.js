@@ -15,7 +15,7 @@ function App() {
   return (
       <Router history={routerHistory}>
         <Switch>
-          <Route exact path="/"  component={Login} />
+          <Route exact path="/login"  component={Login} />
           <ProtectedRoute path="/dashboard" component={Dashboard} />
         </Switch>
       </Router>
